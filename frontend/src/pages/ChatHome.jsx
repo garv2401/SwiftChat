@@ -208,20 +208,20 @@ console.log(time);
           />
         )}
 
-        <Chatmessages
+        {selectedUserId=="AIChat"?<ChatWithAI userDetails={userDetails}/>:<Chatmessages
           messages={messages}
           userDetails={userDetails}
           selectedUserId={selectedUserId}
-        />
+        />}
 
-        <div className="absolute w-full bottom-0 flex justify-center px-7">
+        {selectedUserId!="AIChat" && <div className="absolute w-full bottom-0 flex justify-center px-7">
           <MessageInputForm
             sendMessage={sendMessage}
             newMessage={newMessage}
             setNewMessage={setNewMessage}
             selectedUserId={selectedUserId}
           />
-        </div>
+        </div>}
       </section>
       }
     </div>
