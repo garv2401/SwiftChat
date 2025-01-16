@@ -19,6 +19,7 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
+    toast.success("Please Wait");
     e.preventDefault();
     try {
       const url = "/api/user/register";

@@ -35,7 +35,7 @@ const verifyEmail=async(req,res)=>{
         }
 
         user.verified=true;
-        user.save();
+        await user.save();
         return res.status(200).send({message:"Email verified successfully"});
 
 

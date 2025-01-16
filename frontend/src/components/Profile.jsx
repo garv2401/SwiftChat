@@ -3,7 +3,7 @@ import axios from 'axios'
 import Nav from "./Chat/Nav"
 import {useProfile} from "../contexts/profileContext"
 import SelectAvatar from "./SelectAvatar"
-import toast from 'react-hot-toast'
+import {toast} from 'react-hot-toast'
 
 const Profile = () => {
   const {userDetails}=useProfile();
@@ -20,10 +20,15 @@ const Profile = () => {
     e.preventDefault();
     try{
       const res=await axios.put("/api/user/profile/update",{...formData,avatarLink:selectedLink})
-      console.log(res);
+      console.log("Recieved Data:",res);
+      //toast.success("Profile Updated");
+      toast.success(res.data.message);
+      
 
     }catch(error){
       console.error(error);
+      //toast.error("Error Occurred");
+      toast.error(error.response.data.message);
 
     }
   }

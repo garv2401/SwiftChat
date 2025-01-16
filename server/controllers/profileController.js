@@ -38,9 +38,10 @@ const profileUpdate=async(req,res)=>{
         user.avatarLink=avatarLink;
         user.email=email;
         await user.save();
+        return res.status(200).send({message:"Profile Updated Successfully"})
 
     }else{
-        return res.json(user)
+        return res.status(404).send({message:"User Not Found"})
     }
 
 }

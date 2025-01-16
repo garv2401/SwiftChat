@@ -8,7 +8,7 @@ const Hero = () => {
   console.log(isAuthenticated);
   return (
     <section>
-      <div className="grid max-w-screen-xl px-8 md:py-4 py-8 mx-auto lg:grid-cols-2 items-center gap-8  bg-dark">
+      <div className="grid max-w-screen-xl px-8 md:py-16 py-8 mx-auto lg:grid-cols-2 items-center gap-8  bg-dark">
         {/* Left Content */}
         <div className="flex flex-col justify-center">
           <h1 className="max-w-2xl mb-6 text-4xl font-extrabold text-white leading-tight">
