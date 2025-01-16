@@ -49,7 +49,7 @@ const TopBar = ({
         <>
           {selectedUserId === "AIChat" ? (
             <>
-              <span>Chat With AI</span>
+              <span>AI assistant</span><span className="h-3 rounded-full aspect-square bg-secondary"></span>
             </>
           ) : (
             <>

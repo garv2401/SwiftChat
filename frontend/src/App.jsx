@@ -61,10 +61,6 @@ const router = createBrowserRouter([{
     {
       path:"chatHome",
       element:<ChatHome/>
-    },
-    {
-      path:"chatWithAi",
-      element:<ChatWithAI/>
     }
 
   ]
