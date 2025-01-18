@@ -9,6 +9,7 @@ const MessageInputForm = ({
 }) => {
   const inputRef = useRef(null);
   const [isMobile,setIsMobile]=useState(false);
+  console.log(newMessage,selectedUserId);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -43,7 +44,7 @@ const MessageInputForm = ({
           {isMobile?<input
             ref={inputRef}
             type="search"
-            id="search-dropdown"
+            id="search-dropdown" 
             className="w-full px-4 py-3 rounded-full border-2 border-zinc-700 bg-transparent focus:outline-none text-white"
             placeholder="Your Message"
             value={newMessage}

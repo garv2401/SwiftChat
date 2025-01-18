@@ -3,7 +3,7 @@ const jwt=require('jsonwebtoken');
 
 const peopleController=async(req,res)=>{
     const users=await User.find({verified:true});
-    console.log(users);
+    // console.log(users);
     res.json(users);
 
 }

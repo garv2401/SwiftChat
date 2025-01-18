@@ -11,6 +11,7 @@ const createWebSocketServer=(server)=>{
 
     wss.on("connection",(connection,req)=>{
         console.log('A new user connected');
+        console.log("userId",connection.userId);
         const notifyAboutOnlinePeople=async()=>{
             const onlineUsers=await Promise.all(
                 Array.from(wss.clients).map(async (client)=>{
@@ -56,26 +57,58 @@ const createWebSocketServer=(server)=>{
         })
 
         const cookies=req.headers.cookie;
+        console.log("cookies:",cookies);
 
-        if(cookies){
-            const tokenString=cookies
+        // if(cookies){
+        //     const tokenString=cookies
+        //       .split(";")
+        //       .find((str)=>str.startsWith("authToken"));
+
+        //       console.log("tokenString:",tokenString);
+
+        //     if(tokenString){
+        //         const token=tokenString.split("=")[1];
+        //         console.log("token:",token);
+        //         jwt.verify(token,process.env.JWTPRIVATEKEY,{},(err,userData)=>{
+        //             if(err){
+        //                 console.log(err);
+        //                 return;
+        //             } 
+        //             const {_id,firstName,lastName}=userData;
+        //             connection.userId=_id;
+        //             connection.username=`${firstName}${lastName}`;
+
+        //         });
+        //     }
+        // }
+
+        if (cookies) {
+            const tokenString = cookies
               .split(";")
-              .find((str)=>str.startsWith("authToken"));
-
-            if(tokenString){
-                const token=tokenString.split("=")[1];
-                jwt.verify(token,process.env.JWTPRIVATEKEY,{},(err,userData)=>{
-                    if(err){
-                        console.log(err);
-                        return;
-                    } 
-                    const {_id,firstName,lastName}=userData;
-                    connection.userId=_id;
-                    connection.username=`${firstName}${lastName}`;
-
-                });
+              .map((str) => str.trim()) // Trim each cookie
+              .find((str) => str.startsWith("authToken"));
+              
+            console.log("tokenString:", tokenString);
+          
+            if (tokenString) {
+              const token = tokenString.split("=")[1];
+              console.log("token:", token);
+          
+              jwt.verify(token, process.env.JWTPRIVATEKEY, {}, (err, userData) => {
+                if (err) {
+                  console.log("JWT verification error:", err);
+                  return;
+                }
+                const { _id, firstName, lastName } = userData;
+                connection.userId = _id;
+                connection.username = `${firstName} ${lastName}`;
+                console.log("Authenticated user:", connection.userId, connection.username);
+              });
+            } else {
+              console.log("authToken not found in cookies.");
             }
-        }
+          }
+          
 
         connection.on("message",async(message)=>{
             const messageData=JSON.parse(message.toString());

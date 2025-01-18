@@ -19,6 +19,7 @@ import Profile from "./components/Profile";
 import { useEffect } from "react";
 import { baseURL } from "../apiConfig";
 import { Toaster } from "react-hot-toast";
+import GoogleAuth from "./pages/GoogleAuth"
 
 const Layout = () => {
   const { isAuthenticated, checkAuth } = useAuth();
@@ -45,6 +46,10 @@ const router = createBrowserRouter([{
     {
       path:"login",
       element:<Login/>
+    },
+    {
+      path:"googleAuth",
+      element:<GoogleAuth/>
     },
     {
       path:"register",

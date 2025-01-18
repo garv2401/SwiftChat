@@ -6,14 +6,17 @@ const messageController=require('../controllers/messageController');
 const peopleController=require('../controllers/peopleController');
 const profileController=require('../controllers/profileController');
 const verifyEmail=require('../controllers/emailVerifyController');
+const googleAuthController=require('../controllers/googleAuthController')
 
 router.post('/register',registerController);
+router.post('/auth/google',googleAuthController);
 router.post('/login',loginController);
 router.get('/profile',profileController.profileController);
 router.put('/profile/update',profileController.profileUpdate);
 router.get('/message/:userId',messageController);
 router.get('/people',peopleController);
-router.get('/:id/verify/:token',verifyEmail); 
+router.get('/:id/verify/:token',verifyEmail);
+
 
 module.exports=router;
 

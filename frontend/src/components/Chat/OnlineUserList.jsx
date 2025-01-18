@@ -127,6 +127,7 @@ const OnlineUserList = ({
         {filterOnlinePeople.map((userId) => {
           const { username, avatarLink } = onlinePeople[userId];
           console.log(userId,username);
+          
           return (
             <Contact
               key={userId}

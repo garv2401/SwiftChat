@@ -1,7 +1,7 @@
 const bcrypt=require("bcrypt");
 const {User,validateLogin}=require('../models/userModel');
 
-const loginController=async(req,res)=>{
+const loginController=async(req,res)=>{ 
     try{
         const {error}=validateLogin(req.body.data);
         if(error){

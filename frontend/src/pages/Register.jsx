@@ -1,12 +1,17 @@
 import React from "react";
 import { useAuth } from "../contexts/authContext";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { GoogleLogin } from '@react-oauth/google';
+import { baseURL } from '../../apiConfig';
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const {isAuthenticated,setAuthenticated}=useAuth();
     const [showPass,setShowPass]=useState(false);
+    const navigate=useNavigate();
   const [data, setData] = useState({
     email: "",
     firstName: "",
@@ -26,6 +31,7 @@ const Register = () => {
       const { data: res } = await axios.post(url, data);
       console.log(res.message);
       toast.success(res.message);
+      
     } catch (error) {
       if (
         error.response &&
@@ -36,6 +42,50 @@ const Register = () => {
       }
     }
   };
+  const handleLoginSuccess = async (credentialResponse) => {
+      const idToken = credentialResponse.credential;
+      console.log("ID Token:", idToken);
+    
+      try {
+        const response = await fetch(`${baseURL}/api/user/auth/google`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ idToken: idToken }),
+          credentials: "include",
+        });
+    
+        const data = await response.json();
+    
+        if (response.ok) {
+          console.log('Backend response:', data);
+          // Handle successful login
+          setAuthenticated(true); // User is now authenticated
+          //localStorage.setItem('token', data.token); // Store the token if needed
+          toast.success('Registration successful');
+
+        } else {
+          console.error('Registration failed:', data.message);
+          toast.error(data.message || 'Registration failed');
+        }
+      } catch (err) {
+        console.error('Error with backend verification:', err);
+        toast.error('Something went wrong. Please try again.');
+      }
+    };
+    
+  
+    const handleLoginError = () => {
+      console.log('Login Failed');
+    };
+
+    useEffect(()=>{
+      if(isAuthenticated){
+        navigate('/');
+
+      }
+    },[isAuthenticated]);
 
   return (
     <section className="bg-dark min-h-screen">
@@ -201,6 +251,7 @@ const Register = () => {
                 Create Account
               </button>
 
+              <div className="w-full flex flex-col justify-center items-center gap-1">
               <p className="text-sm font-light text-gray-400">
                 Already have an account?{" "}
                 <Link
@@ -210,6 +261,12 @@ const Register = () => {
                   Login here
                 </Link>
               </p>
+
+              <GoogleLogin
+                      onSuccess={handleLoginSuccess}
+                      onError={handleLoginError}
+                    />
+              </div>
             </form>
           </div>
         </div>

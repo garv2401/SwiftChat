@@ -22,14 +22,14 @@ const Contact = ({
       }}
       >
 
-        <Avatar
+        {<Avatar
          userId={userId}
          username={username}
          isOnline={isOnline}
          avatarLink={avatarLink}
-        />
+        />}
 
-        <span className="text-xs lg:text-base text-center">{username}</span>
+        {<span className="text-xs lg:text-base text-center">{username}</span>}
           {isOnline&&(
             <span className="text-xs rounded-full bg-green-500 px-1 py-1"></span>
           )}

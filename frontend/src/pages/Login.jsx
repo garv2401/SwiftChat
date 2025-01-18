@@ -4,6 +4,9 @@ import {useState,useEffect} from 'react';
 import { useAuth } from '../contexts/authContext';
 import {toast} from "react-hot-toast"
 import {Link,useNavigate} from "react-router-dom"
+import { GoogleLogin } from '@react-oauth/google';
+import { baseURL } from '../../apiConfig';
+
 
 
 
@@ -28,7 +31,7 @@ const Login = () => {
     }
   }, [isAuthenticated])
   
-
+ 
   const handleSubmit=async(e)=>{
     e.preventDefault();
     try{
@@ -49,7 +52,43 @@ const Login = () => {
       }
 
     }
+  };
 
+  const handleLoginSuccess = async (credentialResponse) => {
+    const idToken = credentialResponse.credential;
+    console.log("ID Token:", idToken);
+  
+    try {
+      const response = await fetch(`${baseURL}/api/user/auth/google`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ idToken: idToken }),
+        credentials: "include",
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        console.log('Backend response:', data);
+        // Handle successful login
+        setAuthenticated(true); // User is now authenticated
+        //localStorage.setItem('token', data.token); // Store the token if needed
+        toast.success('Login successful');
+      } else {
+        console.error('Login failed:', data.message);
+        toast.error(data.message || 'Login failed');
+      }
+    } catch (err) {
+      console.error('Error with backend verification:', err);
+      toast.error('Something went wrong. Please try again.');
+    }
+  };
+  
+
+  const handleLoginError = () => {
+    console.log('Login Failed');
   };
 
   return(
@@ -125,10 +164,11 @@ const Login = () => {
                         type='submit'
                         className='w-full text-white focus:ring-2 focus:ring-indigo-500 bg-indigo-800 py-3 rounded-xl hover:bg-indigo-900'
                         >
-                          Sign in
+                          Sign in 
 
                         </button>
 
+                        <div className="w-full flex flex-col justify-center items-center gap-1">
                         <p className="text-sm font-light text-gray-400">
                           Don't have an account yet?{" "}
                           <Link
@@ -137,6 +177,11 @@ const Login = () => {
                             Sign up
                           </Link>
                         </p>
+                        <GoogleLogin
+                      onSuccess={handleLoginSuccess}
+                      onError={handleLoginError}
+                        />
+                        </div>
                     </form>
                 </div>
             </div>

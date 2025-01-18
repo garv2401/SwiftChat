@@ -53,7 +53,7 @@ console.log(time);
 
   useEffect(() => {
     const fetchData=async()=>{
-      if(selectedUserId && selectedUserId!="AIChat"){
+      if(selectedUserId && selectedUserId!=="AIChat"){
        try{
         const res=await axios.get(`/api/user/message/${selectedUserId}`);
         setMessages(res.data);
@@ -142,15 +142,15 @@ console.log(time);
   const sendMessage=(ev)=>{
     if(ev) ev.preventDefault();
     console.log("sending message");
-    console.log(newMessage,selectedUserId);
-    if(selectedUserId!="AIChat"){ws.send(JSON.stringify({text:newMessage,recipient:selectedUserId}));}
+    console.log(userDetails._id,newMessage,selectedUserId);
+    if(selectedUserId!=="AIChat"){ws.send(JSON.stringify({text:newMessage,recipient:selectedUserId}));}
     setNewMessage("");
-    setMessages((prev)=>[...prev,{
+    {selectedUserId!=="AIChat" && setMessages((prev)=>[...prev,{
       text:newMessage,
       sender:userDetails._id,
       recepient:selectedUserId,
       _id:Date.now()
-    }])
+    }])}
   }
   useEffect(() => {
     checkAuth();
@@ -187,7 +187,20 @@ console.log(time);
           selectedUserId={selectedUserId}
         />}
 
-        {selectedUserId!="AIChat" && <div className="absolute w-full bottom-0 flex justify-center px-7">
+        {/* {selectedUserId==="AIChat"&&<ChatWithAI userDetails={userDetails}/>}
+
+        {selectedUserId!=="AIChat" && <Chatmessages
+          messages={messages}
+          userDetails={userDetails}
+          selectedUserId={selectedUserId}
+        />} */}
+        {/* {<Chatmessages
+          messages={messages}
+          userDetails={userDetails}
+          selectedUserId={selectedUserId}
+        />} */}
+
+        {selectedUserId!=="AIChat" && <div className="absolute w-full bottom-0 flex justify-center px-7">
           <MessageInputForm
             sendMessage={sendMessage}
             newMessage={newMessage}
@@ -195,6 +208,14 @@ console.log(time);
             selectedUserId={selectedUserId}
           />
         </div>}
+        {/* {<div className="absolute w-full bottom-0 flex justify-center px-7">
+          <MessageInputForm
+            sendMessage={sendMessage}
+            newMessage={newMessage}
+            setNewMessage={setNewMessage}
+            selectedUserId={selectedUserId}
+          />
+        </div>} */}
       </section>
       }
 
@@ -208,13 +229,13 @@ console.log(time);
           />
         )}
 
-        {selectedUserId=="AIChat"?<ChatWithAI userDetails={userDetails}/>:<Chatmessages
+        {selectedUserId==="AIChat"?<ChatWithAI userDetails={userDetails}/>:<Chatmessages
           messages={messages}
-          userDetails={userDetails}
+          userDetails={userDetails} 
           selectedUserId={selectedUserId}
         />}
 
-        {selectedUserId!="AIChat" && <div className="absolute w-full bottom-0 flex justify-center px-7">
+        {selectedUserId!=="AIChat" && <div className="absolute w-full bottom-0 flex justify-center px-7">
           <MessageInputForm
             sendMessage={sendMessage}
             newMessage={newMessage}

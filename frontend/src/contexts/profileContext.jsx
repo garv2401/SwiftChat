@@ -3,7 +3,7 @@ import { useAuth } from "./authContext"
 import axios from "axios"
 
 const ProfileContext=createContext();
-
+ 
 export const ProfileProvider=({children})=>{
     const {isAuthenticated}=useAuth();
     const [userDetails,setUserDetails]=useState(null);

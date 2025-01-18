@@ -19,7 +19,14 @@ const userSchema=new mongoose.Schema({
     },
     verified:{type:Boolean,default:false},
     verificationLinkSent:{type:Boolean,default:false},
-    avatarLink:{type:String}
+    avatarLink:{type:String},
+    isGoogleUser:{
+        type:Boolean
+    },
+    googleId:{
+        type:String
+    }
+
 },{
     timestamps:true
 })
