@@ -24,7 +24,7 @@ const VerifyEmail = () => {
         setLoading(true);
         const res = await axios.get(`/api/user/${id}/verify/${token}`);
         toast.success(res.data.message);
-        console.log("Verification success");
+        //console.log("Verification success");
       } catch (error) {
         setLoading(false);
         toast.error(error.response.data.message);

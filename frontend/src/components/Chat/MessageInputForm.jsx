@@ -9,7 +9,7 @@ const MessageInputForm = ({
 }) => {
   const inputRef = useRef(null);
   const [isMobile,setIsMobile]=useState(false);
-  console.log(newMessage,selectedUserId);
+  //console.log(newMessage,selectedUserId);
 
   useEffect(() => {
     const checkMobile = () => {

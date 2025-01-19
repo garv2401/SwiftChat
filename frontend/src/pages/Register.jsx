@@ -29,7 +29,7 @@ const Register = () => {
     try {
       const url = "/api/user/register";
       const { data: res } = await axios.post(url, data);
-      console.log(res.message);
+      //console.log(res.message);
       toast.success(res.message);
       
     } catch (error) {
@@ -44,7 +44,7 @@ const Register = () => {
   };
   const handleLoginSuccess = async (credentialResponse) => {
       const idToken = credentialResponse.credential;
-      console.log("ID Token:", idToken);
+      //console.log("ID Token:", idToken);
     
       try {
         const response = await fetch(`${baseURL}/api/user/auth/google`, {

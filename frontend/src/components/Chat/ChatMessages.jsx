@@ -3,7 +3,7 @@ import React from "react";
 
 const ChatMessages = ({ messages, userDetails, selectedUserId }) => {
   const messageContainerRef = useRef(null);
-  console.log(messages);
+  //console.log(messages);
 
   useEffect(() => {
     const container = messageContainerRef.current;

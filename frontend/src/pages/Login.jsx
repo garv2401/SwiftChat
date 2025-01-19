@@ -56,7 +56,7 @@ const Login = () => {
 
   const handleLoginSuccess = async (credentialResponse) => {
     const idToken = credentialResponse.credential;
-    console.log("ID Token:", idToken);
+    //console.log("ID Token:", idToken);
   
     try {
       const response = await fetch(`${baseURL}/api/user/auth/google`, {
@@ -71,7 +71,7 @@ const Login = () => {
       const data = await response.json();
   
       if (response.ok) {
-        console.log('Backend response:', data);
+        //console.log('Backend response:', data);
         // Handle successful login
         setAuthenticated(true); // User is now authenticated
         //localStorage.setItem('token', data.token); // Store the token if needed

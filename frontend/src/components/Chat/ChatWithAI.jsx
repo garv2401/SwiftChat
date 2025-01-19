@@ -20,7 +20,7 @@ const ChatWithAI = (userDetails) => {
         const prompt =
           "Talk to me as a friend without mentioning that you are an AI or gemini";
         const result = await model.generateContent(prompt);
-        console.log(result.response.text());
+        //console.log(result.response.text());
         const msgObj = {
           text: result.response.text(),
           sender: "Gemini",

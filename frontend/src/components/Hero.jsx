@@ -5,7 +5,7 @@ import { useAuth } from "../contexts/authContext";
 
 const Hero = () => {
   const { isAuthenticated } = useAuth();
-  console.log(isAuthenticated);
+  //console.log(isAuthenticated);
   return (
     <section>
       <div className="grid max-w-screen-xl px-8 md:py-16 py-8 mx-auto lg:grid-cols-2 items-center gap-8  bg-dark">

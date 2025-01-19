@@ -9,8 +9,8 @@ const Profile = () => {
   const {userDetails}=useProfile();
   const [formData,setFormData]=useState({});
   const [selectedLink,setSelectedLink]=useState("");
-  console.log(selectedLink);
-  console.log(formData)
+  //console.log(selectedLink);
+  //console.log(formData)
 
   const handleChange=(e)=>{
     setFormData({...formData,[e.target.name]:e.target.value,avatarLink:selectedLink})
@@ -20,7 +20,7 @@ const Profile = () => {
     e.preventDefault();
     try{
       const res=await axios.put("/api/user/profile/update",{...formData,avatarLink:selectedLink})
-      console.log("Recieved Data:",res);
+      //console.log("Recieved Data:",res);
       //toast.success("Profile Updated");
       toast.success(res.data.message);
       

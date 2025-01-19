@@ -21,7 +21,7 @@ export default function Avatar({username,userId,isOnline,avatarLink}){
   const squircleStyles={
     "--squircle-bg-color":color,
   }
-  console.log(avatarLink,username);
+  //console.log(avatarLink,username);
 
 
   return(

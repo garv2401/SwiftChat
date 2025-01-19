@@ -24,7 +24,7 @@ const OnlineUserList = ({
     return fullName.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
-  console.log(filterOnlinePeople,filterOfflinePeople);
+  //console.log(filterOnlinePeople,filterOfflinePeople);
 
   return (
     <>

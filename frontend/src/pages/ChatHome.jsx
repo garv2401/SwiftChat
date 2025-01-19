@@ -16,7 +16,7 @@ const ChatHome = () => {
 const hours = String(now.getHours()).padStart(2, "0"); // Ensures two digits
 const minutes = String(now.getMinutes()).padStart(2, "0"); // Ensures two digits
 const time = `${hours}:${minutes}`;
-console.log(time);
+//console.log(time);
   const {isAuthenticated,checkAuth}=useAuth();
   const [ws,setWs]=useState(null);
   const [selectedUserId,setSelectedUserId]=useState(null);
@@ -141,8 +141,8 @@ console.log(time);
 
   const sendMessage=(ev)=>{
     if(ev) ev.preventDefault();
-    console.log("sending message");
-    console.log(userDetails._id,newMessage,selectedUserId);
+    //console.log("sending message");
+    //console.log(userDetails._id,newMessage,selectedUserId);
     if(selectedUserId!=="AIChat"){ws.send(JSON.stringify({text:newMessage,recipient:selectedUserId}));}
     setNewMessage("");
     {selectedUserId!=="AIChat" && setMessages((prev)=>[...prev,{
