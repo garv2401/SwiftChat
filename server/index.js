@@ -18,7 +18,8 @@ app.use(cookieParser());
 const allowedOrigins=[
     "http://localhost:5173", 
     "http://localhost:4000",
-    "https://mtp3b6l5-5173.inc1.devtunnels.ms/"
+    "https://mtp3b6l5-5173.inc1.devtunnels.ms/",
+    "https://swift-chat-rust.vercel.app/"
     
 ];
 
