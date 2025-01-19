@@ -1,4 +1,4 @@
-const bcrypt=require("bcrypt");
+const bcrypt=require("bcryptjs");
 const {User,validateLogin}=require('../models/userModel');
 
 const loginController=async(req,res)=>{ 

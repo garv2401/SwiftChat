@@ -1,4 +1,4 @@
-const bcrypt=require('bcrypt');
+const bcrypt=require('bcryptjs');
 const {User,validateRegister}=require('../models/userModel');
 const {Token}=require('../models/tokenModel');
 const crypto=require('crypto');
