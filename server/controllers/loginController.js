@@ -31,7 +31,10 @@ const loginController=async(req,res)=>{
             httpOnly:false,
             sameSite:"none",
             secure:true,
-            expires:new Date(Date.now()+7*24*60*60*1000)
+            expires:new Date(Date.now()+7*24*60*60*1000),
+            domain: '.vercel.app',      // The domain for your frontend (will cover any subdomains of vercel.app)
+            path: '/',  
+
 
            })
            .send({message:"Login Sucessful",status:200});

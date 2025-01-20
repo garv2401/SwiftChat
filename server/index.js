@@ -15,27 +15,32 @@ connection();
 app.use(express.json());
 app.use(cookieParser());
 
-const allowedOrigins=[
-    "http://localhost:5173", 
-    "http://localhost:4000",
-    "https://mtp3b6l5-5173.inc1.devtunnels.ms/",
-    "https://swift-chat-rust.vercel.app",
-    "https://swiftchat-oasr.onrender.com"
+// const allowedOrigins=[
+//     "http://localhost:5173", 
+//     "http://localhost:4000",
+//     "https://mtp3b6l5-5173.inc1.devtunnels.ms/",
+//     "https://swift-chat-rust.vercel.app",
+//     "https://swiftchat-oasr.onrender.com"
     
+// ];
+
+const allowedOrigins=[
+    "https://swift-chat-rust.vercel.app",
 ];
 
 
-// const corsOptions={
-//     origin:(origin,callback)=>{
-//         if(allowedOrigins.includes(origin)||!origin){
-//             callback(null,true);
-//         }else{
-//             callback(new Error("Not allowed by cors"))
-//         }
-//     },
-//     methods:"GET,HEAD,PUT,PATCH,POST,DELETE",
-//     optionsSuccessStatus:204,
-//     credentials:true
+const corsOptions={
+    origin:(origin,callback)=>{
+        if(allowedOrigins.includes(origin)||!origin){
+            callback(null,true);
+        }else{
+            callback(new Error("Not allowed by cors"))
+        }
+    },
+    methods:"GET,HEAD,PUT,PATCH,POST,DELETE",
+    optionsSuccessStatus:204,
+    credentials:true
+}
 
 // }
 app.use((req, res, next) => {
@@ -45,17 +50,17 @@ app.use((req, res, next) => {
 });
 
 
-const corsOptions = {
-    origin: (origin, callback) => {
-        console.log("Origin:", origin); // Debug log
-        if (allowedOrigins.includes(origin) || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
-    credentials: true,
-};
+// const corsOptions = {
+//     origin: (origin, callback) => {
+//         console.log("Origin:", origin); // Debug log
+//         if (allowedOrigins.includes(origin) || !origin) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error("Not allowed by CORS"));
+//         }
+//     },
+//     credentials: true,
+// };
 
 app.options("*", (req, res) => {
     res.set("Access-Control-Allow-Origin", req.headers.origin);
