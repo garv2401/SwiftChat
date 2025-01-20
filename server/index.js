@@ -28,6 +28,11 @@ const allowedOrigins=[
     "https://swift-chat-rust.vercel.app",
 ];
 
+app.use(cors({
+    origin: 'https://swift-chat-rust.vercel.app', // Your frontend domain
+    credentials: true, // Allow credentials (cookies) to be sent
+}));
+
 
 const corsOptions={
     origin:(origin,callback)=>{
