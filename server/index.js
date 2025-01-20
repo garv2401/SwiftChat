@@ -25,19 +25,39 @@ const allowedOrigins=[
 ];
 
 
-const corsOptions={
-    origin:(origin,callback)=>{
-        if(allowedOrigins.includes(origin)||!origin){
-            callback(null,true);
-        }else{
-            callback(new Error("Not allowed by cors"))
+// const corsOptions={
+//     origin:(origin,callback)=>{
+//         if(allowedOrigins.includes(origin)||!origin){
+//             callback(null,true);
+//         }else{
+//             callback(new Error("Not allowed by cors"))
+//         }
+//     },
+//     methods:"GET,HEAD,PUT,PATCH,POST,DELETE",
+//     optionsSuccessStatus:204,
+//     credentials:true
+
+// }
+
+const corsOptions = {
+    origin: (origin, callback) => {
+        console.log("Origin:", origin); // Debug log
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
         }
     },
-    methods:"GET,HEAD,PUT,PATCH,POST,DELETE",
-    optionsSuccessStatus:204,
-    credentials:true
+    credentials: true,
+};
 
-}
+app.options("*", (req, res) => {
+    res.set("Access-Control-Allow-Origin", req.headers.origin);
+    res.set("Access-Control-Allow-Credentials", "true");
+    res.set("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
+    res.set("Access-Control-Allow-Headers", "Content-Type");
+    res.status(204).send();
+});
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions)); 
