@@ -28,7 +28,7 @@ const loginController=async(req,res)=>{
 
         res.status(200)
            .cookie("authToken",token,{
-            httpOnly:false,
+            httpOnly:true,
             sameSite:"none",
             secure:true,
             domain: '.onrender.com', // Domain for both frontend and backend (same domain for both)
