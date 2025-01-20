@@ -11,8 +11,9 @@ export const AuthProvider=({children})=>{
 
     const checkAuth=()=>{
         const token=Cookies.get("authToken");
+        const localToken = localStorage.getItem('authToken');
         console.log("token:",token);
-        if(token){
+        if(token || localToken){
             setIsAuthenticated(true);
             console.log("Token Exists");
             console.log(isAuthenticated);
