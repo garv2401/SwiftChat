@@ -53,6 +53,14 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use((req, res, next) => {
+    console.log('Request Origin:', req.headers.origin);
+    res.setHeader("Access-Control-Allow-Origin", '*'); // For now, allow all origins
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    next();
+  });
+  
+
 
 // const corsOptions = {
 //     origin: (origin, callback) => {
