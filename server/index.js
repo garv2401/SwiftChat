@@ -29,7 +29,7 @@ const allowedOrigins=[
 ];
 
 app.use(cors({
-    origin: 'https://swift-chat-rust.vercel.app', // Your frontend domain
+    origin: 'https://swiftchat-f.onrender.com', // Your frontend domain
     credentials: true, // Allow credentials (cookies) to be sent
 }));
 
