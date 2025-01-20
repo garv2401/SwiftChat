@@ -11,7 +11,9 @@ export const ProfileProvider=({children})=>{
     useEffect(()=>{
         const fetchUserDetails=async()=>{
             try{
-                const res=await axios.get("/api/user/profile");
+                const res=await axios.get("/api/user/profile",{ 
+                    withCredentials:true
+                  });
                 setUserDetails(res.data);
     
             }
