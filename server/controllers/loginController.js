@@ -25,7 +25,7 @@ const loginController=async(req,res)=>{
         }
 
         const token=user.generateAuthToken();
-        localStorage.setItem('authToken', token);
+        //localStorage.setItem('authToken', token);
         res.status(200)
            .cookie("authToken",token,{
             httpOnly:false,
