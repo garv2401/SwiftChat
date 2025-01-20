@@ -27,7 +27,7 @@ const loginController=async(req,res)=>{
         const token=user.generateAuthToken();
 
         res.status(200)
-           .cookie('authToken',token,{
+           .cookie("authToken",token,{
             httpOnly:false,
             sameSite:"none",
             secure:true,
