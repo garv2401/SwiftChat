@@ -38,9 +38,14 @@ const allowedOrigins=[
 //     credentials:true
 
 // }
+// app.use((req, res, next) => {
+//     res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+//     res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+//     next();
+// });
 app.use((req, res, next) => {
-    res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
-    res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+    res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups"); // Allow popups
+    res.setHeader("Cross-Origin-Embedder-Policy", "require-corp"); // Adjust as needed
     next();
 });
 
@@ -57,13 +62,15 @@ const corsOptions = {
     credentials: true,
 };
 
-app.options("*", (req, res) => {
-    res.set("Access-Control-Allow-Origin", req.headers.origin);
-    res.set("Access-Control-Allow-Credentials", "true");
-    res.set("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
-    res.set("Access-Control-Allow-Headers", "Content-Type");
-    res.status(204).send();
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"), (error) => {
+        if (error) {
+            console.error("Error sending file:", error);
+            res.status(500).send("Error sending file.");
+        }
+    });
 });
+
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions)); 
