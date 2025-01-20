@@ -74,13 +74,13 @@ app.use((req, res, next) => {
 //     credentials: true,
 // };
 
-// app.options("*", (req, res) => {
-//     res.set("Access-Control-Allow-Origin", req.headers.origin);
-//     res.set("Access-Control-Allow-Credentials", "true");
-//     res.set("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
-//     res.set("Access-Control-Allow-Headers", "Content-Type");
-//     res.status(204).send();
-// });
+app.options("*", (req, res) => {
+    res.set("Access-Control-Allow-Origin", req.headers.origin);
+    res.set("Access-Control-Allow-Credentials", "true");
+    res.set("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
+    res.set("Access-Control-Allow-Headers", "Content-Type");
+    res.status(204).send();
+});
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions)); 
