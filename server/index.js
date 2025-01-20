@@ -19,9 +19,8 @@ const allowedOrigins=[
     "http://localhost:5173", 
     "http://localhost:4000",
     "https://mtp3b6l5-5173.inc1.devtunnels.ms/",
-    "https://swift-chat-rust.vercel.app",
+    "https://swiftchat-f.onrender.com",
     "https://swiftchat-oasr.onrender.com"
-    
 ];
 
 // const allowedOrigins=[
@@ -67,19 +66,22 @@ app.use((req, res, next) => {
 //     credentials: true,
 // };
 
-app.options("*", (req, res) => {
-    res.set("Access-Control-Allow-Origin", req.headers.origin);
-    res.set("Access-Control-Allow-Credentials", "true");
-    res.set("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
-    res.set("Access-Control-Allow-Headers", "Content-Type");
-    res.status(204).send();
-});
+// app.options("*", (req, res) => {
+//     res.set("Access-Control-Allow-Origin", req.headers.origin);
+//     res.set("Access-Control-Allow-Credentials", "true");
+//     res.set("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
+//     res.set("Access-Control-Allow-Headers", "Content-Type");
+//     res.status(204).send();
+// });
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions)); 
 
 app.use("/api/user",userRoute);
 app.use("/api/avatar",avatarRoute);
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "frontend", "dist", "index.html"));
+});
 
 
 const server=app.listen(port,()=>console.log("Server running on 8000"));
