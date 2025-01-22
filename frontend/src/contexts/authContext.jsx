@@ -10,24 +10,47 @@ export const AuthProvider=({children})=>{
     }
 
     const checkAuth=()=>{
-        const token=Cookies.get("authToken");
-        const localToken = localStorage.getItem('authToken');
-        console.log("token:",token);
-        if(token || localToken){
-            setIsAuthenticated(true);
-            console.log("Token Exists");
-            console.log(isAuthenticated);
-        }
-        else{
-            setIsAuthenticated(false);
-            console.log("Token Does'nt Exists");
-            console.log(isAuthenticated);
+        // const token=Cookies.get("authToken");
+        // const localToken = localStorage.getItem('authToken');
+        const checkAuthToken=async()=>{
+            try{
+                const res=await axios.get('api/user/checkToken');
+
+                if(res.status==200 || res.status==201){
+                    setIsAuthenticated(true);
+                    console.log(res.data.message);
+                    console.log(isAuthenticated);
+                }else{
+                    setIsAuthenticated(false);
+                    console.log(res.data.message);
+                }
+
+            }catch(error){
+                setIsAuthenticated(false);
+                console.log(error.res.data.message);
+                console.log(isAuthenticated);
+                console.log("Error fetching checkToken",error);
+
+            }
 
         }
+        checkAuthToken();
+        //console.log("token:",token);
+        // if(token || localToken){
+        //     setIsAuthenticated(true);
+        //     console.log("Token Exists");
+        //     console.log(isAuthenticated);
+        // }
+        // else{
+        //     setIsAuthenticated(false);
+        //     console.log("Token Does'nt Exists");
+        //     console.log(isAuthenticated);
+
+        // }
     }
 
     const logout=()=>{
-        Cookies.remove("authToken");
+        //Cookies.remove("authToken");
         setAuthenticated(false);
     }
 
