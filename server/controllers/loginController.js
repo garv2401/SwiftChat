@@ -31,8 +31,6 @@ const loginController=async(req,res)=>{
             httpOnly:false,
             sameSite:"none",
             secure:true,
-            domain: '.onrender.com', // Domain for both frontend and backend (same domain for both)
-            path: '/',
             expires:new Date(Date.now()+7*24*60*60*1000),
            })
            .send({message:"Login Sucessful",status:200});
