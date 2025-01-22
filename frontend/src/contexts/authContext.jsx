@@ -54,6 +54,7 @@ export const AuthProvider=({children})=>{
         const removeToken=async()=>{
             const res=await axios.get("api/user/removeToken");
             if(res.status==200 || res.status==201){
+                setIsAuthenticated(false);
                 console.log("Logged out");
             }
         }
