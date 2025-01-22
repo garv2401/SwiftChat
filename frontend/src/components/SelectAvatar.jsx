@@ -26,11 +26,11 @@ const SelectAvatar = ({
 
   const isBelowMd = useMediaQuery({ query: "(max-width: 768px)" }); // Adjust breakpoint as needed
 
-  // const style = {
-  //   width: "90px",
-  //   height: isBelowMd ? "70px" : "90px",
-  //   margin: "5px",
-  // };
+  const style = {
+    width: "90px",
+    height: "90px",
+    margin: "5px",
+  };
   
   return (
     <div className="mt-3">
@@ -44,7 +44,7 @@ const SelectAvatar = ({
           src={avatar.link}
           onClick={()=>setSelectedLink(avatar.link)}
             alt={`Avatar ${avatar._id}`}
-            style={{width:"90px",margin:"5px",height:"90px"}}
+            style={style}
              className={`rounded-full cursor-pointer p-2 bg-primarySecond ${selectedLink===avatar.link?"outline":""} outline-white`}/>
         ))}
       </div>
