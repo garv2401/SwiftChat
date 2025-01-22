@@ -8,6 +8,7 @@ const profileController=require('../controllers/profileController');
 const verifyEmail=require('../controllers/emailVerifyController');
 const googleAuthController=require('../controllers/googleAuthController')
 const checkTokenController=require('../controllers/checkTokenController');
+const removeCookieController=require('../controllers/removeCookieController');
 
 router.post('/register',registerController);
 router.post('/auth/google',googleAuthController);
@@ -18,8 +19,7 @@ router.get('/message/:userId',messageController);
 router.get('/people',peopleController);
 router.get('/:id/verify/:token',verifyEmail);
 router.get('/checkToken',checkTokenController);
-
-
+router.get('/removeToken',removeCookieController);
 module.exports=router;
 
 

@@ -51,7 +51,13 @@ export const AuthProvider=({children})=>{
 
     const logout=()=>{
         //Cookies.remove("authToken");
-        setAuthenticated(false);
+        const removeToken=async()=>{
+            const res=await axios.get("api/user/removeToken");
+            if(res.status==200 || res.status==201){
+                console.log("Logged out");
+            }
+        }
+        removeToken();
     }
 
     return(
