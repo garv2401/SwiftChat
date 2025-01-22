@@ -10,6 +10,6 @@ let socketURL;
 // }
 
 baseURL="https://swiftchat-oasr.onrender.com";
-socketURL="ws://swiftchat-oasr.onrender.com";
+socketURL="wss://swiftchat-oasr.onrender.com";
 
 export {baseURL,socketURL};
