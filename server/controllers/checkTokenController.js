@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 const checkTokenController = async (req, res) => {
-    const token = req.signedCookies["authToken"];
+    const token = req.cookies["authToken"];
     if (!token) {
         return res.status(400).send({ message: "Token Doesn't Exist" });
     }
