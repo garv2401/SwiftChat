@@ -20,7 +20,8 @@ const allowedOrigins=[
     "http://localhost:4000",
     "https://mtp3b6l5-5173.inc1.devtunnels.ms/",
     "https://swiftchat-f.onrender.com",
-    "https://swiftchat-oasr.onrender.com"
+    "https://swiftchat-oasr.onrender.com",
+    "https://accounts.google.com" 
 ];
 
 // const allowedOrigins=[
