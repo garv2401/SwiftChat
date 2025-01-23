@@ -36,7 +36,7 @@ const SelectAvatar = ({
       <p className="block mb-2 text-lg font-medium text-white">
         Choose Avatar
       </p>
-      <div className="grid grid-cols-4 gap-2 mb-7">
+      <div className="grid grid-cols-3 md:grid-cols-4 gap-2 mb-7">
         {avatars.map((avatar)=>(
           <img
           key={avatar._id}
