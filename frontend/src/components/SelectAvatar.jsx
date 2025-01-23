@@ -22,13 +22,13 @@ const SelectAvatar = ({
       }
     }
     fetchAllAvatars();
-  })
+  },[])
 
   const isBelowMd = useMediaQuery({ query: "(max-width: 768px)" }); // Adjust breakpoint as needed
 
   const style = {
     width: "90px",
-    height: "90px",
+    height: isBelowMd?"70px":"90px",
     margin: "5px",
   };
   
@@ -37,7 +37,7 @@ const SelectAvatar = ({
       <p className="block mb-2 text-lg font-medium text-white">
         Choose Avatar
       </p>
-      <div className="grid grid-cols-4 gap-2 mb-7">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 mb-7">
         {avatars.map((avatar)=>(
           <img
           key={avatar._id}
