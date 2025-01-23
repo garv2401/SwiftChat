@@ -26,25 +26,25 @@ const SelectAvatar = ({
 
   const isBelowMd = useMediaQuery({ query: "(max-width: 768px)" }); // Adjust breakpoint as needed
 
-  const style = {
-    width: "90px",
-    height: isBelowMd?"70px":"90px",
-    margin: "5px",
-  };
+  // const style = {
+  //   width: "90px",
+  //   height: isBelowMd?"70px":"90px",
+  //   margin: "5px",
+  // };
   
   return (
     <div className="mt-3">
       <p className="block mb-2 text-lg font-medium text-white">
         Choose Avatar
       </p>
-      <div className="grid grid-cols-3 md:grid-cols-4 gap-2 mb-7">
+      <div className="grid grid-cols-4 gap-2 mb-7">
         {avatars.map((avatar)=>(
           <img
           key={avatar._id}
           src={avatar.link}
           onClick={()=>setSelectedLink(avatar.link)}
             alt={`Avatar ${avatar._id}`}
-            style={style}
+            style={{width:"90px",height:"90px",margin:"5px"}}
              className={`rounded-full cursor-pointer p-2 bg-primarySecond ${selectedLink===avatar.link?"outline":""} outline-white`}/>
         ))}
       </div>
