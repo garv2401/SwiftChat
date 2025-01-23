@@ -28,7 +28,7 @@
     border-radius: 9999px; /* Rounded full */
     cursor: pointer;
     padding: 0.5rem;
-    background-color: var(#6B8AFD); /* Replace with your color */
+    background-color: #6B8AFD; /* Replace with your color */
   }
   
   /* Selected avatar outline */
