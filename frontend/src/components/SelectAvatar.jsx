@@ -2,7 +2,6 @@ import React from 'react'
 import Avatar from './Chat/Avatars'
 import { useState,useEffect } from 'react'
 import axios from 'axios'
-import { useMediaQuery } from "react-responsive";
 
 const SelectAvatar = ({
   setSelectedLink,
@@ -24,7 +23,7 @@ const SelectAvatar = ({
     fetchAllAvatars();
   },[])
 
-  const isBelowMd = useMediaQuery({ query: "(max-width: 768px)" }); // Adjust breakpoint as needed
+  //const isBelowMd = useMediaQuery({ query: "(max-width: 768px)" }); // Adjust breakpoint as needed
 
   // const style = {
   //   width: "90px",
