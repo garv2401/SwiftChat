@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
-import Blogo from "../../../public/BLogo.png"
+
 
 const Nav = () => {
   const { logout, isAuthenticated } = useAuth();
@@ -130,7 +130,7 @@ const Nav = () => {
             s
           >
             <img
-              src={Blogo}
+              src="/Blogo.png"
               alt="SwiftLogo"
               className="h-8"
             />

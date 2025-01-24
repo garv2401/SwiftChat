@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
-import Slogo from "../../public/SLogo.png"
+
 
 const LandingNav = () => {
   const { isAuthenticated } = useAuth();
@@ -17,7 +17,7 @@ const LandingNav = () => {
       <div className="md:max-w-screen-xl sm:w-full flex flex-wrap items-center justify-between mx-auto ">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
-            src={Slogo}
+            src="/Slogo.png"
             alt="Swift logo"
             className="h-10"
           />
