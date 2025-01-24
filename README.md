@@ -55,7 +55,7 @@ Ensure you have the following installed:
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/<garv2401>/swiftchat.git
+   git clone https://github.com/garv2401/swiftchat.git
    cd swiftchat
    ```
 
@@ -79,7 +79,7 @@ Ensure you have the following installed:
 
 3. **Set Up the Frontend**
    ```bash
-   cd ../frontend
+   cd ../client
    npm install
    ```
    - Start the development server:
@@ -87,9 +87,31 @@ Ensure you have the following installed:
      npm run dev
      ```
 
----
+4. **Access the Application**
+   Open your browser and navigate to:
+   ```
+   http://localhost:3000
+   ```
 
 ---
+
+## Folder Structure
+
+```
+SwiftChat/
+|── client/          # Frontend code
+|   |── src/
+|       |── components/  # React components
+|       |── assets/      # Static assets
+|── server/          # Backend code
+    |── controllers/  # API controllers
+    |── models/       # Mongoose models
+    |── routes/       # API routes
+    |── config/       # Config files
+```
+
+---
+
 ## Contributing
 
 Contributions are welcome! To contribute:
@@ -102,6 +124,9 @@ Contributions are welcome! To contribute:
 
 ---
 
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
 
 ---
 
@@ -109,5 +134,5 @@ Contributions are welcome! To contribute:
 
 For any inquiries or support, please reach out:
 - **Email**: [garvitkumar504@gmail.com](mailto:garvitkumar504@gmail.com)
-
+- **GitHub**: [Garv2401's GitHub Profile](https://github.com/garv2401)
 
