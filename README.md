@@ -55,7 +55,7 @@ Ensure you have the following installed:
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/<your-username>/swiftchat.git
+   git clone https://github.com/<garv2401>/swiftchat.git
    cd swiftchat
    ```
 
@@ -79,7 +79,7 @@ Ensure you have the following installed:
 
 3. **Set Up the Frontend**
    ```bash
-   cd ../client
+   cd ../frontend
    npm install
    ```
    - Start the development server:
@@ -87,77 +87,9 @@ Ensure you have the following installed:
      npm run dev
      ```
 
-4. **Access the Application**
-   Open your browser and navigate to:
-   ```
-   http://localhost:3000
-   ```
-
 ---
 
-## Folder Structure
-
-```
-SwiftChat/
-|── client/          # Frontend code
-|   |── src/
-|       |── components/  # React components
-|       |── assets/      # Static assets
-|── server/          # Backend code
-    |── controllers/  # API controllers
-    |── models/       # Mongoose models
-    |── routes/       # API routes
-    |── config/       # Config files
-```
-
 ---
-
-## API Endpoints
-
-### **Authentication**
-- `POST /api/auth/register` – Register a new user
-- `POST /api/auth/login` – Login user
-- `GET /api/auth/google` – Google OAuth authentication
-
-### **User Management**
-- `GET /api/users` – Get all users
-- `GET /api/users/:id` – Get user by ID
-
-### **Chats**
-- `POST /api/chats` – Create a new chat
-- `GET /api/chats/:id` – Fetch chat history
-- `POST /api/chats/ai` – Chat with Gemini AI
-
----
-
-## Screenshots
-
-**Login Page**
-![Login Page](path/to/login-page-screenshot.png)
-
-**Chat Interface**
-![Chat Interface](path/to/chat-interface-screenshot.png)
-
----
-
-## Deployment
-
-SwiftChat is deployed using:
-- **Frontend**: [Vercel](https://vercel.com)
-- **Backend**: [Render](https://render.com)
-
----
-
-## Roadmap
-
-### Planned Features
-- Group Chats
-- File Sharing
-- Push Notifications
-- Typing Indicators
-
----
-
 ## Contributing
 
 Contributions are welcome! To contribute:
@@ -170,15 +102,12 @@ Contributions are welcome! To contribute:
 
 ---
 
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
 
 ---
 
 ## Contact
 
 For any inquiries or support, please reach out:
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
-- **GitHub**: [Your GitHub Profile](https://github.com/<your-username>)
+- **Email**: [garvitkumar504@gmail.com](mailto:garvitkumar504@gmail.com)
+
 
