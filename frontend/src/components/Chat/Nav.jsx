@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
+import logo from "../../assets/BLogo.png"
 
 const Nav = () => {
   const { logout, isAuthenticated } = useAuth();
@@ -129,7 +130,7 @@ const Nav = () => {
             s
           >
             <img
-              src="https://flowbite.com/docs/images/logo.svg"
+              src={logo}
               alt="SwiftLogo"
               className="h-8"
             />
