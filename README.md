@@ -1,6 +1,6 @@
 # SwiftChat
 
-SwiftChat is a real-time chat application built using the MERN stack. It allows users to communicate seamlessly with each other, featuring advanced functionality such as AI chat, Google authentication, and enhanced security with JWT and cookies.
+SwiftChat is a real-time chat application which allows users to communicate seamlessly with each other, featuring advanced functionality such as AI chat, Google authentication, and enhanced security with JWT and cookies.
 
 ---
 
