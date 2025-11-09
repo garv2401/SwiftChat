@@ -6,7 +6,7 @@ const ChatWithAI = (userDetails) => {
   const genAI = new GoogleGenerativeAI(
     "AIzaSyBHrVfuLN-M4nLiLlwLcvVKum4v5Jp-28Q"
   );
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
   const [newPrompt, setNewPrompt] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState(null);
