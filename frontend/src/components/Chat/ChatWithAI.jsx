@@ -4,7 +4,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const ChatWithAI = (userDetails) => {
   const genAI = new GoogleGenerativeAI(
-    "AIzaSyBHrVfuLN-M4nLiLlwLcvVKum4v5Jp-28Q"
+    "AIzaSyBvw4GCEaMaHKzbLX49s3TWTNs60fMvlq8"
   );
   const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
   const [newPrompt, setNewPrompt] = useState(null);
